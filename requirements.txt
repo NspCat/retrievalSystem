@@ -1,0 +1,7 @@
+numpy>=1.7.1
+six>=1.1.0
+torch > 0.3
+flask
+h5py
+nltk
+yaml

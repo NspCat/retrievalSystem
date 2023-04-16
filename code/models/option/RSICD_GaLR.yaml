@@ -1,55 +1,64 @@
+# 模型（用于描述模型的各种属性）
 model:
+    # 多尺度
     multiscale:
-        multiscale_input_channel: 3
-        multiscale_output_channel: 1
+        multiscale_input_channel: 3     # 多尺度输入信道
+        multiscale_output_channel: 1    # 多尺度输出信道
+    # 交叉注意力
     cross_attention:
-        att_type: "soft_att"
+        att_type: "soft_att"            # 注意力类型（选择的是软注意力）
+    # 将序列转换为向量
     seq2vec:
-        arch: skipthoughts
-        dir_st: E:\Python\tools\skipthoughts
-        type: BayesianUniSkip
-        dropout: 0.25
-        fixed_emb: False
+        arch: skipthoughts                      # 模型架构
+        dir_st: E:\Python\tools\skipthoughts    # 模型参数路径
+        type: BayesianUniSkip                   # 模型类型
+        dropout: 0.25                           # 丢弃率
+        fixed_emb: False                        # 是否固定嵌入
+    # 特征融合
     fusion:
-        correct_local_hidden_dim: 512
-        correct_local_hidden_drop: 0.2
-        supplement_global_hidden_dim: 512
-        supplement_global_hidden_drop: 0.2
-        dynamic_fusion_dim: 512
-        dynamic_fusion_drop: 0.2
-        mca_DROPOUT_R: 0.1
-        mca_HIDDEN_SIZE: 512
-        mca_FF_SIZE: 1024
-        mca_MULTI_HEAD: 8
-        mca_HIDDEN_SIZE_HEAD: 64
+        correct_local_hidden_dim: 512       # 局部特征纠正的维度
+        correct_local_hidden_drop: 0.2      # 局部特征纠正过程中使用的丢弃率
+        supplement_global_hidden_dim: 512   # 全局特征补充的维度
+        supplement_global_hidden_drop: 0.2  # 全局特征补充过程中使用的丢弃率
+        dynamic_fusion_dim: 512             # 动态特征融合的维度
+        dynamic_fusion_drop: 0.2            # 动态特征融合过程中使用的丢弃率
+        mca_DROPOUT_R: 0.1                  # 多头注意力（MCA）中使用的丢弃率
+        mca_HIDDEN_SIZE: 512                # MCA中隐藏层的大小
+        mca_FF_SIZE: 1024                   # MCA中前馈网络（feedforward network）的大小
+        mca_MULTI_HEAD: 8                   # MCA中的多头数目
+        mca_HIDDEN_SIZE_HEAD: 64            # MCA中每个头的隐藏层的大小
     embed:
-        embed_dim: 512
-    name: GaLR
+        embed_dim: 512                      # 嵌入层（embedding layer）的维度
+    name: GaLR      # 模型名称为：GaLR
+# 数据集
 dataset:
-    datatype: rsicd
-    data_split:
-    data_path: 'data/rsicd_precomp/'
-    image_path: '../MTFN-RR-PyTorch-Code-master/data/sydney_precomp/images/'
-    vocab_path: 'vocab/rsicd_splits_vocab.json'
-    local_path: './detection/representation/SYDNEY/sydney_local.npy'
-    batch_size: 10
-    batch_size_val: 10
-    workers: 0
+    datatype: rsicd                                                                 # 数据集的类型为：RSICD
+    data_split:                                                                     # 数据集的划分方式
+    data_path: 'data/rsicd_precomp/'                                                # 数据集文件的路径
+    image_path: '../MTFN-RR-PyTorch-Code-master/data/sydney_precomp/images/'        # 数据集中图像文件的路径
+    vocab_path: 'vocab/rsicd_splits_vocab.json'                                     # 数据集中单词表文件的路径
+    local_path: './detection/representation/SYDNEY/sydney_local.npy'                # 数据集中局部特征的路径
+    batch_size: 10                                                                  # 训练时每个批次中的样本数
+    batch_size_val: 10                                                              # 验证时每个批次中的样本数
+    workers: 0                                                                      # 用于数据加载的线程数
+# 优化器（optimizer）
 optim:
-    epochs: 3
-    lr: 0.0001
-    lr_decay_param: 0.7
-    lr_update_epoch: 20
-    grad_clip: 0
-    max_violation: 0
-    margin: 0.2
-    resume: False
+    epochs: 3               # 训练时的迭代次数
+    lr: 0.0001              # 学习率的大小
+    lr_decay_param: 0.7     # 学习率衰减的参数
+    lr_update_epoch: 20     # 学习率更新的迭代周期
+    grad_clip: 0            # 梯度裁剪的阈值
+    max_violation: 0        # 约束条件中最大的违反值
+    margin: 0.2             # 损失函数中的边际值
+    resume: False           # 是否从先前保存的模型中恢复训练
+# 日志
 logs:
-    eval_step: 1
-    print_freq: 10
-    ckpt_save_path: "checkpoint/GaLR_best.pth.tar"
-    logger_name: 'logs/'
+    eval_step: 1                                    # 每隔多少个迭代步骤进行一次模型评估
+    print_freq: 10                                  # 每隔多少个迭代步骤输出一次训练日志
+    ckpt_save_path: "checkpoint/GaLR_best.pth.tar"  # 保存训练检查点（checkpoint）的路径
+    logger_name: 'logs/'                            # 日志文件的名称
+# 交叉验证
 k_fold:
-    experiment_name: 'sydney_GaLR'
-    nums: 3
-    current_num: 0
+    experiment_name: 'sydney_GaLR'      # 实验的名称
+    nums: 3                             # 交叉验证的折数
+    current_num: 0                      # 当前进行的交叉验证折数的编号

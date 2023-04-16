@@ -1,6 +1,6 @@
 apis:
     hosts:
-        ip: '192.168.140.241'
+        ip: '0.0.0.0'   # 自动检测分配 IP 地址
         port: 33133
     image_encode:
         route: '/api/image_encode/'
