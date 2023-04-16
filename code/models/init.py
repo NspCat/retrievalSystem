@@ -21,7 +21,8 @@ def parser_options(prefix_path):
     opt = parser.parse_args()
 
     # load model options
-    with open(os.path.join(prefix_path,opt.path_opt), 'r') as handle:
+    # with open(os.path.join(prefix_path,opt.path_opt), 'r', ) as handle:
+    with open(os.path.join(prefix_path, opt.path_opt), 'r', encoding='utf-8') as handle:
         options = yaml.load(handle)
 
     return options

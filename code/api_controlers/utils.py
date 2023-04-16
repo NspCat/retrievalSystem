@@ -5,8 +5,10 @@ import os,random
 
 # 加载参数
 def get_config(path_opt="common/config.yaml"):
+    # with open(path_opt, 'r') as handle:
     with open(path_opt, 'r', encoding='utf-8') as handle:
-        options = yaml.load(handle, Loader=yaml.FullLoader)
+        options = yaml.load(handle)
+        # options = yaml.load(handle, Loader=yaml.FullLoader)
     return options
 
 # 储存为npy文件

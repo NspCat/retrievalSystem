@@ -4,4 +4,5 @@ torch > 0.3
 flask
 h5py
 nltk
-yaml
+pyyaml==5.4.1
+skipthoughts

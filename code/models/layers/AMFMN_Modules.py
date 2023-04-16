@@ -15,7 +15,7 @@ import numpy as np
 from collections import OrderedDict
 from torchvision.models.resnet import resnet18
 import torch.nn.functional as F
-from layers import seq2vec
+import seq2vec
 import math
 import copy
 

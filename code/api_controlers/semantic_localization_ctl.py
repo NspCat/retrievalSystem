@@ -1,11 +1,11 @@
-from api_controlers import base_function
-from api_controlers import utils
+import base_function
+import utils
 import sys,time
 import cv2
 import numpy as np
 import os
 sys.path.append("..")
-import globalvar
+from.. import globalvar
 
 # 变量初始化
 model = globalvar.get_value("model")

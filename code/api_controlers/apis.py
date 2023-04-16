@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import json, os
 from threading import Timer
 
-from api_controlers import base_function, image_encode_ctl, delete_encode_ctl,\
+import base_function, image_encode_ctl, delete_encode_ctl,\
     text_search_ctl, image_search_ctl, semantic_localization_ctl,  utils
 
 def api_run(cfg):

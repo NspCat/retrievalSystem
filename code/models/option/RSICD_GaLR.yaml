@@ -10,7 +10,8 @@ model:
     # 将序列转换为向量
     seq2vec:
         arch: skipthoughts                      # 模型架构
-        dir_st: E:\Python\tools\skipthoughts    # 模型参数路径
+#        dir_st: E:\Python\tools\skipthoughts
+        dir_st: D:\Anaconda3\envs\pytorch\Lib\site-packages\skipthoughts    # 模型参数路径
         type: BayesianUniSkip                   # 模型类型
         dropout: 0.25                           # 丢弃率
         fixed_emb: False                        # 是否固定嵌入

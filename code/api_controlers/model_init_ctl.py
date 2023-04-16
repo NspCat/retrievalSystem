@@ -1,7 +1,7 @@
 import sys
 sys.path.append("..")
-from models import init as model_init
-import globalvar
+from.. models import init as model_init
+from.. import globalvar
 
 # 变量初始化
 logger = globalvar.get_value("logger")
