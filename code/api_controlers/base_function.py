@@ -5,9 +5,9 @@
 import numpy as np
 import sys
 sys.path.append("..")
-from.. models import encoder
+from models import encoder
 import logging
-from.. import globalvar
+import globalvar
 
 # 变量初始化
 logger = globalvar.get_value("logger")

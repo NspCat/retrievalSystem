@@ -1,10 +1,10 @@
-import base_function
-import utils
+from api_controlers import base_function
+from api_controlers import utils
 import sys,time
 from threading import Timer
 
 sys.path.append("..")
-from.. import globalvar
+import globalvar
 
 # 变量初始化
 model = globalvar.get_value("model")
